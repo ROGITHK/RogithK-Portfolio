@@ -92,6 +92,34 @@ body {
     transition: 0.3s;
 }
 
+/* Download CV Button Animation */
+@keyframes downloadPulse {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+#download-cv.downloading {
+    animation: downloadPulse 0.6s ease;
+    background: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+#download-cv.success {
+    background: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.download-icon {
+    margin-right: 8px;
+}
+
+
+
+
+
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
