@@ -124,6 +124,45 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     timelineObserver.observe(item);
 });
 
+// CV Download Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('download-cv');
+    
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Change button text and style
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-download"></i> Downloading...';
+        this.classList.add('downloading');
+        
+        // Create temporary download link
+        const link = document.createElement('a');
+        link.href = "ROGITH_K_RESUME.PDF";  // ← CHANGE THIS TO YOUR CV FILENAME
+        link.download = 'Rogith_K_ETL_Tester_CV.pdf';  // ← DOWNLOAD FILENAME
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('downloading');
+            this.classList.add('success');
+            
+            setTimeout(() => {
+                this.classList.remove('success');
+            }, 1000);
+        }, 2000);
+    });
+});
+
+
+
+
+
 // Add animation class to timeline items
 const timelineStyle = document.createElement('style');
 timelineStyle.textContent = `
